@@ -67,6 +67,9 @@ class Upload_File_Name_Sanitizer {
             // Replace specific characters.
             $cleaned_filename = str_replace( array_keys( $chars_replaced ), array_values( $chars_replaced ), $cleaned_filename );
 
+            // Convert characters to ASCII equivalents.
+            $cleaned_filename = remove_accents( $cleaned_filename );
+
             // Remove characters that are not a-z, 0-9, or - (dash).
             $cleaned_filename = preg_replace( '/[^a-z0-9-]/', '', $cleaned_filename );
 
